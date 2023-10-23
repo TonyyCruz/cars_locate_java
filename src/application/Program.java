@@ -7,6 +7,8 @@ import java.util.Locale;
 import java.util.Scanner;
 import model.entities.CarRental;
 import model.entities.Vehicle;
+import model.services.BrazilTaxService;
+import model.services.RentalService;
 
 public class Program {
 
@@ -26,8 +28,27 @@ public class Program {
       endDate = formattedDate(sc);
     }
     CarRental carRental = new CarRental(startDate, endDate, new Vehicle(carModel));
+    System.out.print("Enter the price per hour: ");
+    double priceHour = sc.nextDouble();
+    while (priceHour < 0) {
+      System.out.println("The price per hour cannot be a negative number.");
+      System.out.println("Please insert a number greater than 0: ");
+      priceHour = sc.nextDouble();
+    }
+    System.out.print("Enter the price per day: ");
+    double priceDay = sc.nextDouble();
+    while (priceDay < 0) {
+      System.out.println("The price per day cannot be a negative number.");
+      System.out.println("Please insert a number greater than 0: ");
+      priceDay = sc.nextDouble();
+    }
+    RentalService rentalService = new RentalService(priceHour, priceDay, new BrazilTaxService());
+    rentalService.processInvoice(carRental);
 
-    System.out.println(carRental);
+    System.out.println("Invoice:");
+    System.out.println("Base payment: " + carRental.getInvoice().getBasicPayment());
+    System.out.println("Tax: " + carRental.getInvoice().getTax());
+    System.out.println("Total payment: " + carRental.getInvoice().getTotalPayment());
     sc.close();
   }
 
