@@ -18,7 +18,7 @@ Pagamento total: 60.00<br>
 <h3>Example 2:</h3>
 
 Entre com os dados do aluguel<br>
-Modelo do carro: Civic<br>
+Modelo do carro: Gol<br>
 Retirada (dd/MM/yyyy hh:mm): 25/06/2018 10:30<br>
 Retorno (dd/MM/yyyy hh:mm): 27/06/2018 11:40<br>
 Entre com o preço por hora: 10.00<br>
