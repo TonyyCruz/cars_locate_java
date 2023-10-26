@@ -24,10 +24,10 @@ public class RentalService {
   }
 
   private double baseRentalCalculate(double hours) {
-    if (hours < 12) {
+    if (hours <= 12) {
       return hours * pricePerHour;
     }
-    if (hours < 24) {
+    if (hours <= 24) {
       return pricePerDay;
     }
     double hoursAboveDay = hours % 24;
